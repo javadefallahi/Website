@@ -1,134 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mohammad Javad Fallahi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #0d1b2a; /* Dark Blue */
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h2 {
-            color: #0d1b2a; /* Dark Blue */
-        }
-        .job, .education {
-            margin-bottom: 15px;
-        }
-        .job h3, .education h3 {
-            margin: 0;
-        }
-        .job p, .education p {
-            margin: 5px 0;
-        }
-        .skills ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .skills li {
-            margin-bottom: 10px;
-        }
-        footer {
-            background-color: #0d1b2a; /* Dark Blue */
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative; /* Removed fixed position */
-            width: 100%;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Mohammad Javad Fallahi | Resume</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+  <style>
+    /* Color palette variables */
+    :root {
+      --bg: #f4f4f4;
+      --text: #2d2d2d;
+      --header-bg: #004d40;
+      --header-text: #ffffff;
+      --primary: #00897b;
+      --primary-light: #26a69a;
+      --btn-bg: #00897b;
+      --btn-text: #ffffff;
+      --section-bg: #ffffff;
+      --section-shadow: rgba(0, 0, 0, 0.1);
+    }
+    .dark {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --header-bg: #00251a;
+      --header-text: #a7ffeb;
+      --primary: #1de9b6;
+      --primary-light: #64ffda;
+      --btn-bg: #1de9b6;
+      --btn-text: #00251a;
+      --section-bg: #1e1e1e;
+      --section-shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Base styles */
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Header centered flex */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    header .one-liner {
+      margin-top: 0.5rem;
+      font-style: italic;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    /* Toggle Switch (visible) */
+    .toggle-container {
+      margin-bottom: 1rem;
+    }
+    .toggle-container input {
+      display: none;
+    }
+    .toggle-switch {
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+      background: var(--primary-light);
+      border: 2px solid var(--btn-text);
+      border-radius: 13px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle-switch::after {
+      content: '';
+      width: 22px;
+      height: 22px;
+      background: var(--btn-text);
+      border-radius: 50%;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      transition: transform 0.3s;
+    }
+    input:checked + .toggle-switch {
+      background: var(--primary);
+    }
+    input:checked + .toggle-switch::after {
+      transform: translateX(24px);
+    }
+
+    /* Buttons (CTAs) */
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.2s, transform 0.2s;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    /* Container & Sections */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background-color: var(--section-bg);
+      box-shadow: 0 2px 10px var(--section-shadow);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    p, li {
+      text-align: justify;
+      line-height: 1.6;
+    }
+    ul { padding-left: 1rem; }
+
+    /* Footer centered */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      padding: 1.5rem 1rem;}
+    footer a { color: var(--primary-light); }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .btn { display: block; width: 80%; margin: 0.5rem auto; }
+      .toggle-switch { width: 40px; height: 20px; }
+      .toggle-switch::after { width: 18px; height: 18px; }
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>Mohammad Javad Fallahi</h1>
-        <p>MBA Student | Technical Expert | Enthusiast</p>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>About Me</h2>
-            <p>
-              My career has always been about turning technology into real-world solutions, from technical workshops to business discussions. Now, as I pursue my MBA in Technology Management, I’m refining my ability to merge technical expertise with business strategy. My focus? Driving innovation and creating value for a brighter future.
-          </p>
-        </section>
-
-        <section>
-          <h2>Experience</h2>
-            <div class="job">
-                <h3>Senior Technical Expert | DahiTeb</h3>
-                <p><strong>May 2024 - Present</strong></p>
-                <p>Service and Repair of Stryker Medical Devices (Surgical Room), mostly orthopedic Drills and saws.</p>
-            </div>
-            <div class="job">
-                <h3>Technical Supervisor | Rahyan Teb Saba</h3>
-                <p><strong>June 2021 - May2024</strong></p>
-              <p>- Installation, Training, Service, and Repair of KARL STORZ Medical Devices (Surgical Room)</p>
-                <p>&nbsp; Workflow management - Technical team supervisio   - Customer support </p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="education">
-                <h3>Master of Business Administration | MBA (Technology)&nbsp;</h3>
-                <p><strong>University of Tehran</strong> - Aug 2024</p>
-                <p>Innovation and Technology management (MOT, MOI)</p>
-            </div>
-			<div class="education">
-                <h3>Bachelor of Biomedical Engineering</h3>
-                <p><strong>Amirkabir University of Technology (Tehran Polytechnic)</strong> - 2015 - 2020</p>
-                <p>Activities and societies: Helal Ahmar, Publication, Mountaineering Club</p>
-          </div>
-        </section>
-
-        <section>
-            <h2>Skills</h2>
-            <div class="skills">
-                <ul>
-                    <li><strong>Research</strong> - Experienced in Advanced and Deep research both academic and business</li>
-                    <li><strong>Design</strong> - Familiar with Adobe family softwares and 2 years of design Experince in University&nbsp;&nbsp;</li>
-                    <li><strong>Programmin&nbsp;&nbsp;</strong> - A bit familarity with Python and HTML and CSS</li>
-                    <li><strong>Product Management</strong> - Tose'e Higher Education Institute</li>
-                    
-                </ul>
-            </div>
-        </section>
+  <header>
+    <div class="toggle-container">
+      <input type="checkbox" id="themeToggle" x-model="darkMode" />
+      <label for="themeToggle" class="toggle-switch"></label>
     </div>
+    <h1>Mohammad Javad Fallahi</h1>
+    <p class="tagline one-liner">Merging engineering precision with strategic vision to drive innovation.</p>
+    <div class="ctas">
+      <a href="/resume.pdf" class="btn" target="_blank">Download PDF</a>
+      <a href="https://ir.linkedin.com/in/javadefallahi" class="btn" target="_blank">Connect on LinkedIn</a>
+    </div>
+  </header>
 
-    <footer>
-        <p>Contact me at: <a href="javadefallahi@gmail.com">javadefallahi@gmail.com</a></p>
-    </footer>
+  <div class="container">
+    <section>
+      <h2>About Me</h2>
+      <p>
+        My career has always been about turning technology into real-world solutions, from technical workshops to business discussions. Now, as I pursue my MBA in Technology Management, I’m refining my ability to merge technical expertise with business strategy. My focus? Driving innovation and creating value for a brighter future.
+      </p>
+    </section>
 
+    <section>
+      <h2>Experience</h2>
+      <div class="job">
+        <h3>Senior Technical Expert | DahiTeb</h3>
+        <p><strong>May 2024 - Present</strong></p>
+        <p>Service and Repair of Stryker Medical Devices (Surgical Room), mostly orthopedic drills and saws.</p>
+      </div>
+      <div class="job">
+        <h3>Technical Supervisor | Rahyan Teb Saba</h3>
+        <p><strong>June 2021 - May 2024</strong></p>
+        <p>Installation, training, service, and repair of KARL STORZ Medical Devices (Surgical Room). Workflow management, technical team supervision, and customer support.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="education">
+        <h3>Master of Business Administration | MBA (Technology)</h3>
+        <p><strong>University of Tehran</strong> - Aug 2024</p>
+        <p>Innovation and Technology Management (MOT, MOI).</p>
+      </div>
+      <div class="education">
+        <h3>Bachelor of Biomedical Engineering</h3>
+        <p><strong>Amirkabir University of Technology (Tehran Polytechnic)</strong> - 2015 - 2020</p>
+        <p>Activities and societies: Helal Ahmar, Publication, Mountaineering Club.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Research</strong> – Experienced in advanced academic and business research.</li>
+        <li><strong>Design</strong> – Proficient with Adobe Creative Suite; 2 years of design experience.</li>
+        <li><strong>Programming</strong> – Familiar with Python, HTML, and CSS.</li>
+        <li><strong>Product Management</strong> – Developed strategic roadmaps at Tose'e Higher Education Institute.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>Contact me at: <a href="mailto:javadefallahi@gmail.com">javadefallahi@gmail.com</a> | <a href="https://ir.linkedin.com/in/javadefallahi" target="_blank">LinkedIn</a></p>
+  </footer>
 </body>
 </html>
