@@ -1,234 +1,317 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Mohammad Javad Fallahi</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
-  <style>
-    /* Color palette variables */
-    :root {
-      --bg: #f4f4f4;
-      --text: #2d2d2d;
-      --header-bg: #004d40;
-      --header-text: #ffffff;
-      --primary: #00897b;
-      --primary-light: #26a69a;
-      --btn-bg: #00897b;
-      --btn-text: #ffffff;
-      --section-bg: #ffffff;
-      --section-shadow: rgba(0, 0, 0, 0.1);
-    }
-    .dark {
-      --bg: #121212;
-      --text: #e0e0e0;
-      --header-bg: #00251a;
-      --header-text: #a7ffeb;
-      --primary: #1de9b6;
-      --primary-light: #64ffda;
-      --btn-bg: #1de9b6;
-      --btn-text: #00251a;
-      --section-bg: #1e1e1e;
-      --section-shadow: rgba(0, 0, 0, 0.5);
-    }
-
-    /* Base styles */
-    * { box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    /* Header centered flex */
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--header-bg);
-      color: var(--header-text);
-      padding: 2rem 1rem;
-      position: relative;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-align: center;
-    }
-    header .one-liner {
-      margin-top: 0.5rem;
-      font-style: italic;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-
-    /* Toggle Switch (visible) */
-    .toggle-container {
-      margin-bottom: 1rem;
-    }
-    .toggle-container input {
-      display: none;
-    }
-    .toggle-switch {
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-      background: var(--primary-light);
-      border: 2px solid var(--btn-text);
-      border-radius: 13px;
-      position: relative;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .toggle-switch::after {
-      content: '';
-      width: 22px;
-      height: 22px;
-      background: var(--btn-text);
-      border-radius: 50%;
-      position: absolute;
-      top: 1px;
-      left: 1px;
-      transition: transform 0.3s;
-    }
-    input:checked + .toggle-switch {
-      background: var(--primary);
-    }
-    input:checked + .toggle-switch::after {
-      transform: translateX(24px);
-    }
-
-    /* Buttons (CTAs) */
-    .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.2s, transform 0.2s;
-      text-align: center;
-    }
-    .btn:hover {
-      background-color: var(--primary-light);
-      transform: translateY(-2px);
-    }
-
-    /* Container & Sections */
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      background-color: var(--section-bg);
-      box-shadow: 0 2px 10px var(--section-shadow);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-    h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    p, li {
-      text-align: justify;
-      line-height: 1.6;
-    }
-    ul { padding-left: 1rem; }
-
-    /* Footer centered */
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-color: var(--header-bg);
-      color: var(--header-text);
-      padding: 1.5rem 1rem;}
-    footer a { color: var(--primary-light); }
-
-    /* Mobile responsiveness */
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      .btn { display: block; width: 80%; margin: 0.5rem auto; }
-      .toggle-switch { width: 40px; height: 20px; }
-      .toggle-switch::after { width: 18px; height: 18px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Javad Fallahi - Creative CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.8/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #1a202c; /* Dark gray text */
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; /* Adjust based on icon size and line position */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-color: #4299e1; /* Blue-500 */
+            border-radius: 50%;
+            border: 3px solid #ffffff; /* White border */
+            z-index: 1;
+        }
+        .timeline-line {
+            position: absolute;
+            left: -21px; /* Center the line with the dot */
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #e2e8f0; /* Gray-300 */
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(0, 0, 0, 0.06);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); /* Blue gradient */
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Dark Mode Styles */
+        .dark body {
+            background-color: #1a202c; /* Dark gray background */
+            color: #e2e8f0; /* Light gray text */
+        }
+        .dark .section-card {
+            background-color: #2d3748; /* Darker card background */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .dark .section-card:hover {
+             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .dark .timeline-item::before {
+            background-color: #63b3ed; /* Lighter blue for dark mode */
+            border-color: #2d3748; /* Card background for border */
+        }
+        .dark .timeline-line {
+            background-color: #4a5568; /* Darker gray for line */
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); /* Slightly adjusted blue gradient */
+        }
+        .dark .text-gray-700 { color: #a0aec0; } /* Adjust gray text for dark mode */
+        .dark .text-gray-500 { color: #718096; }
+        .dark .text-blue-600 { color: #63b3ed; }
+        .dark .hover\:text-blue-700:hover { color: #90cdf4; }
+        .dark .bg-blue-500 { background-color: #4299e1;}
+        .dark .hover\:bg-blue-600:hover { background-color: #3182ce;}
+        .dark .border-blue-500 { border-color: #4299e1;}
+        .dark .placeholder\:text-gray-400::placeholder { color: #718096; }
+        .dark input[type="text"], .dark textarea {
+            background-color: #4a5568;
+            color: #e2e8f0;
+            border-color: #718096;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="toggle-container">
-      <input type="checkbox" id="themeToggle" x-model="darkMode" />
-      <label for="themeToggle" class="toggle-switch"></label>
-    </div>
-    <h1>Mohammad Javad Fallahi</h1>
-    <p class="tagline one-liner">Merging engineering precision with strategic vision to drive innovation.</p>
-    <div class="ctas">
-      <a href="/resume.pdf" class="btn" target="_blank">Download PDF</a>
-      <a href="https://linkedin.com/in/javadefallahi" class="btn" target="_blank">Connect on LinkedIn</a>
-    </div>
-  </header>
+<body 
+    class="antialiased" 
+    x-data="{ 
+        darkMode: localStorage.getItem('darkMode') === 'true',
+        mobileMenuOpen: false
+    }" 
+    :class="{ 'dark': darkMode }" 
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+>
 
-  <div class="container">
-    <section>
-      <h2>About Me</h2>
-      <p>
-        My career has always been about turning technology into real-world solutions, from technical workshops to business discussions. Now, as I pursue my MBA in Technology Management, I’m refining my ability to merge technical expertise with business strategy. My focus? Driving innovation and creating value for a brighter future.
-      </p>
+    <header class="hero-gradient text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl lg:text-3xl font-bold tracking-tight">Mohammad Javad Fallahi</a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="nav-link hover:text-gray-200">About</a>
+                <a href="#experience" class="nav-link hover:text-gray-200">Experience</a>
+                <a href="#education" class="nav-link hover:text-gray-200">Education</a>
+                <a href="#skills" class="nav-link hover:text-gray-200">Skills</a>
+                <a href="#contact" class="nav-link hover:text-gray-200">Contact</a>
+                <button @click="darkMode = !darkMode" class="ml-4 p-2 rounded-full hover:bg-white/20 focus:outline-none transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-xl"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-xl text-yellow-400"></i>
+                </button>
+            </nav>
+            <div class="md:hidden flex items-center">
+                 <button @click="darkMode = !darkMode" class="mr-2 p-2 rounded-full hover:bg-white/20 focus:outline-none transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-xl"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-xl text-yellow-400"></i>
+                </button>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden bg-blue-700 dark:bg-blue-800" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2">
+            <a href="#about" @click="mobileMenuOpen = false" class="block py-2 px-6 text-white hover:bg-blue-600 dark:hover:bg-blue-700">About</a>
+            <a href="#experience" @click="mobileMenuOpen = false" class="block py-2 px-6 text-white hover:bg-blue-600 dark:hover:bg-blue-700">Experience</a>
+            <a href="#education" @click="mobileMenuOpen = false" class="block py-2 px-6 text-white hover:bg-blue-600 dark:hover:bg-blue-700">Education</a>
+            <a href="#skills" @click="mobileMenuOpen = false" class="block py-2 px-6 text-white hover:bg-blue-600 dark:hover:bg-blue-700">Skills</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block py-2 px-6 text-white hover:bg-blue-600 dark:hover:bg-blue-700">Contact</a>
+        </div>
+    </header>
+
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <img src="https://placehold.co/150x150/FFFFFF/3B82F6?text=MJF" alt="Mohammad Javad Fallahi" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full mb-6 border-4 border-white shadow-xl" onerror="this.src='https://placehold.co/150x150/FFFFFF/3B82F6?text=Profile+Image'; this.onerror=null;">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3 tracking-tight">Mohammad Javad Fallahi</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Merging engineering precision with strategic vision to drive innovation.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <a href="resume.pdf" target="_blank" class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fas fa-download mr-2"></i>Download CV
+                </a>
+                <a href="https://linkedin.com/in/javadefallahi" target="_blank" class="inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-blue-400 dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
+                </a>
+                <a href="https://github.com/javadefallahi" target="_blank" class="inline-block bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+            </div>
+        </div>
     </section>
 
-    <section>
-      <h2>Experience</h2>
-      <div class="job">
-        <h3>Senior Technical Expert | DahiTeb</h3>
-        <p><strong>May 2024 - Present</strong></p>
-        <p>Service and Repair of Stryker Medical Devices (Surgical Room), mostly orthopedic drills and saws.</p>
-      </div>
-      <div class="job">
-        <h3>Technical Supervisor | Rahyan Teb Saba</h3>
-        <p><strong>June 2021 - May 2024 (3 Years)</strong></p>
-        <p>Installation, training, service, and repair of KARL STORZ Medical Devices (Surgical Room). Workflow management, technical team supervision, and customer support.</p>
-      </div>
-    </section>
+    <main class="container mx-auto px-6 py-12">
+        <section id="about" class="section-card mb-16 p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-6 text-center text-blue-600 dark:text-blue-400">
+                <i class="fas fa-user-tie mr-3"></i>About Me
+            </h2>
+            <p id="about-text" class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
+                My career has always been about turning technology into real-world solutions, bridging the gap from intricate technical workshops to high-level business discussions. As I pursue my MBA in Technology Management, I’m keenly focused on refining my ability to merge deep technical expertise with robust business strategy. My ultimate goal? To drive meaningful innovation and create lasting value for a brighter, technologically advanced future.
+            </p>
+        </section>
 
-    <section>
-      <h2>Education</h2>
-      <div class="education">
-        <h3>Master of Business Administration | MBA (Technology)</h3>
-        <p><strong>University of Tehran</strong> - Aug 2024</p>
-        <p>Innovation and Technology Management (MOT, MOI).</p>
-      </div>
-      <div class="education">
-        <h3>Bachelor of Biomedical Engineering</h3>
-        <p><strong>Amirkabir University of Technology (Tehran Polytechnic)</strong> - 2015 - 2020</p>
-        <p>Activities and societies: Helal Ahmar, Publication, Mountaineering Club.</p>
-      </div>
-    </section>
+        <section id="experience" class="section-card mb-16 p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center text-blue-600 dark:text-blue-400">
+                <i class="fas fa-briefcase mr-3"></i>Professional Experience
+            </h2>
+            <div id="experience-items" class="relative max-w-3xl mx-auto">
+                <div class="timeline-line hidden sm:block"></div>
+                <div class="mb-12 sm:pl-10 relative timeline-item">
+                    <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-md border-l-4 border-blue-500 dark:border-blue-400">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Senior Technical Expert</h3>
+                        <p class="text-blue-600 dark:text-blue-400 font-medium">DahiTeb</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">May 2024 - Present</p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            Specializing in the service and repair of Stryker medical devices within surgical room environments, primarily focusing on orthopedic drills and saws. Ensuring optimal functionality and reliability of critical surgical equipment.
+                        </p>
+                    </div>
+                </div>
+                <div class="mb-12 sm:pl-10 relative timeline-item">
+                     <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-md border-l-4 border-blue-500 dark:border-blue-400">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Technical Supervisor</h3>
+                        <p class="text-blue-600 dark:text-blue-400 font-medium">Rahyan Teb Saba</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">June 2021 - May 2024 (3 Years)</p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            Oversaw installation, training, service, and repair of KARL STORZ medical devices for surgical rooms. Managed workflow logistics, supervised the technical team, and provided dedicated customer support to ensure client satisfaction and operational excellence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Research</strong> – Experienced in advanced academic and business research.</li>
-        <li><strong>Design</strong> – Proficient with Adobe Products; 2 years of design experience.</li>
-        <li><strong>Programming</strong> – Familiar with Python, JS, HTML, and CSS.</li>
-        <li><strong>Product Management</strong> – Course at Tose'e Higher Education Institute.</li>
-      </ul>
-    </section>
-  </div>
+        <section id="education" class="section-card mb-16 p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center text-blue-600 dark:text-blue-400">
+                <i class="fas fa-graduation-cap mr-3"></i>Education
+            </h2>
+            <div id="education-items" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Master of Business Administration (MBA) - Technology</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium">University of Tehran</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Expected Graduation: Aug 2024</p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Focusing on Innovation and Technology Management (MOT, MOI). Gaining strategic insights into leveraging technology for business growth and market leadership.
+                    </p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Bachelor of Biomedical Engineering</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium">Amirkabir University of Technology (Tehran Polytechnic)</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">2015 - 2020</p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Activities and societies: Helal Ahmar (Red Crescent), University Publication, Mountaineering Club.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>Contact me at: <a href="mailto:javadefallahi@gmail.com">javadefallahi@gmail.com</a> | <a href="https://linkedin.com/in/javadefallahi" target="_blank">LinkedIn</a></p>
-  </footer>
+        <section id="skills" class="section-card mb-16 p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center text-blue-600 dark:text-blue-400">
+                <i class="fas fa-cogs mr-3"></i>Core Competencies
+            </h2>
+            <div id="skills-list" class="max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-3">Technical & Business Acumen</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100 px-4 py-2 rounded-full text-sm font-medium">Medical Device Technology</span>
+                        <span class="skill-tag bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100 px-4 py-2 rounded-full text-sm font-medium">Technical Support & Repair</span>
+                        <span class="skill-tag bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100 px-4 py-2 rounded-full text-sm font-medium">Product Management</span>
+                        <span class="skill-tag bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100 px-4 py-2 rounded-full text-sm font-medium">Business Strategy</span>
+                        <span class="skill-tag bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100 px-4 py-2 rounded-full text-sm font-medium">Innovation Management</span>
+                    </div>
+                </div>
+                <div> <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-3">Research & Design</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-purple-100 text-purple-700 dark:bg-purple-700 dark:text-purple-100 px-4 py-2 rounded-full text-sm font-medium">Advanced Research (Academic & Business)</span>
+                        <span class="skill-tag bg-purple-100 text-purple-700 dark:bg-purple-700 dark:text-purple-100 px-4 py-2 rounded-full text-sm font-medium">Adobe Creative Suite</span>
+                        <span class="skill-tag bg-purple-100 text-purple-700 dark:bg-purple-700 dark:text-purple-100 px-4 py-2 rounded-full text-sm font-medium">UI/UX Principles (Familiarity)</span>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="contact" class="section-card p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-8 text-center text-blue-600 dark:text-blue-400">
+                <i class="fas fa-envelope-open-text mr-3"></i>Let's Connect
+            </h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center max-w-2xl mx-auto mb-8">
+                I'm always open to discussing new opportunities, collaborations, or just connecting with like-minded professionals. Feel free to reach out!
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="mailto:javadefallahi@gmail.com" class="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fas fa-envelope mr-2"></i> Email Me
+                </a>
+                <a href="https://linkedin.com/in/javadefallahi" target="_blank" class="inline-flex items-center justify-center bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 dark:bg-gray-900 text-gray-300 dark:text-gray-400 py-10 text-center">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://linkedin.com/in/javadefallahi" target="_blank" class="hover:text-white text-xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/javadefallahi" target="_blank" class="hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; <span id="currentYear"></span> Mohammad Javad Fallahi. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Designed with <i class="fas fa-heart text-red-500"></i> and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Access Alpine.js data context from the body element
+                    const alpineData = Alpine.$data(document.body);
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // If it's a mobile menu link, close the menu
+                    if (alpineData && typeof alpineData.mobileMenuOpen !== 'undefined') {
+                         alpineData.mobileMenuOpen = false;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
