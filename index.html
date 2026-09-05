@@ -155,8 +155,8 @@
 
     <section class="hero-gradient text-white py-16 md:py-24">
         <div class="container mx-auto px-6 text-center">
-            <!-- LINKEDIN PHOTO: could not be auto-fetched (LinkedIn blocks scraping/robots.txt + auth wall). Replace src below with a direct hosted URL of your photo, or upload the file and update this path. -->
-            <img src="https://placehold.co/150x150/FFFFFF/3B82F6?text=MJF" alt="Mohammad Javad Fallahi" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full mb-6 border-4 border-white shadow-xl object-cover" onerror="this.src='https://placehold.co/150x150/FFFFFF/3B82F6?text=Profile+Image'; this.onerror=null;">
+            <!-- Profile picture sourced from GitHub avatar endpoint (github.com/javadefallahi.png) — public, non-authenticated. Falls back to placeholder if unavailable. -->
+            <img src="https://github.com/javadefallahi.png" alt="Mohammad Javad Fallahi" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full mb-6 border-4 border-white shadow-xl object-cover" onerror="this.src='https://placehold.co/150x150/FFFFFF/3B82F6?text=MJF'; this.onerror=null;">
             <h1 class="text-4xl md:text-5xl font-bold mb-3 tracking-tight">Mohammad Javad Fallahi</h1>
             <p class="text-xl md:text-2xl mb-8 font-light">Merging engineering precision with strategic vision to drive innovation.</p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
@@ -165,6 +165,9 @@
                 </a>
                 <a href="mailto:javadefallahi@gmail.com" class="inline-block bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors transform hover:scale-105 w-full sm:w-auto">
                     <i class="fas fa-envelope mr-2"></i>Email Me
+                </a>
+                <a href="https://wa.me/989199943949" target="_blank" class="inline-block bg-green-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-green-600 transition-colors transform hover:scale-105 w-full sm:w-auto">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
                 </a>
             </div>
         </div>
@@ -299,7 +302,7 @@
                 I'm always open to discussing new opportunities, collaborations, or just connecting with like-minded professionals. Feel free to reach out!
             </p>
             <p class="text-center text-gray-500 dark:text-gray-400 mb-8">
-                <i class="fas fa-location-dot mr-1"></i>Tehran, Iran &nbsp;·&nbsp; <i class="fas fa-phone mr-1"></i>0919 994 3949
+                <i class="fas fa-location-dot mr-1"></i>Tehran, Iran &nbsp;·&nbsp; <i class="fas fa-phone mr-1"></i>+989199943949
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <a href="mailto:javadefallahi@gmail.com" class="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors transform hover:scale-105 w-full sm:w-auto">
@@ -320,6 +323,7 @@
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="https://linkedin.com/in/javadefallahi" target="_blank" class="hover:text-white text-xl transition-colors"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:javadefallahi@gmail.com" class="hover:text-white text-xl transition-colors"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/989199943949" target="_blank" class="hover:text-white text-xl transition-colors"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p>&copy; <span id="currentYear"></span> All Rights Reserved.</p>
         </div>
